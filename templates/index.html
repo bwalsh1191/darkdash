@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>World population</title>
+    <title>My First Dash</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
   </head>
 
 <body>
         <div class="wrapper" width="300" height="300">
-                <h1>World population over time</h1>
-                <h2>Number of people (in millions) living on earth, the last 500 years</h2>
+                <h1>Stock Price</h1>
+                <h2>Shows the stock price for the last several months</h2>
           
                 <canvas id="line_chart"></canvas>
               </div>
@@ -28,12 +28,19 @@
             data: {{values | tojson}}
             }]
           }, 
-          options: {
-            title: {
-              display: true,
-              text: 'Stock Price'
-            }
-          }
-        });
+          options:{
+        scales:{
+            xAxes: [{
+                
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 6
+                } //this will remove all the x-axis grid lines
+            }]
+        }
+    }
+
+
+  });
 </script>
 </html>

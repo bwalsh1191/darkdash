@@ -1,17 +1,23 @@
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
+  background-color: rgba(30,30,46,1);
 }
 
 .wrapper {
   max-width: 800px;
   margin: 50px auto;
+  background-color:rgba(39,41,59,1);
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgba(39,41,59,1);
 }
 
 h1 {
   font-weight: 200;
   font-size: 3em;
   margin: 0 0 0.1em 0;
+  color: white;
 }
 
 h2 {

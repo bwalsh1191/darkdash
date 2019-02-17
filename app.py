@@ -1,16 +1,19 @@
 from flask import Flask, render_template
 import pandas as pd
+
+
 app = Flask(__name__)
 
 API_KEY = '4HNDQOUQ2A1G90RW'
+
 
 @app.route('/')
 def hello_world():
 
     symbol='msft'
-    values, years, days = make_df(symbol)
+    values, days = make_df(symbol)
     
-    return render_template('index.html', values=values, years=years, symbol=symbol, days=days)
+    return render_template('index.html', values=values, symbol=symbol, days=days)
 '''
 def get_data():
     years = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009]
@@ -30,10 +33,10 @@ def make_df(symbol):
     df['day'] = df['date'].dt.day_name()
     df['month'] = df['date'].dt.month_name()
     df['year'] = df['date'].dt.year
-    close_price = df['close'].tolist()
-    date_list = df['date'].tolist()
-    days= df['month'].tolist()
-    return(close_price, date_list, days)
+    close_price = list(reversed(df['close'].tolist()))
+    #close_price = list(reversed(close_price))
+    days= list(reversed(df['date'].tolist()))
+    return(close_price, days)
 
 
 #THIS HAST TO BE THE END OF THE FILE
