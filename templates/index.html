@@ -7,11 +7,11 @@
   </head>
 
 <body>
-        <div class="wrapper">
+        <div class="wrapper" width="300" height="300">
                 <h1>World population over time</h1>
                 <h2>Number of people (in millions) living on earth, the last 500 years</h2>
           
-                <canvas id="line_chart" width="800" height="800"></canvas>
+                <canvas id="line_chart"></canvas>
               </div>
 
 </body>
@@ -20,17 +20,18 @@
     new Chart(document.getElementById("line_chart"), {
          type: 'line',
           data: {
-            labels: {{labels | tojson}},
+            labels: {{years | tojson}},
             datasets: [{
-              label: "Pie Chart",
-              backgroundColor: "blue",
+              label: "Populations in Millions",
+              borderColor: "#3e95cd",
+              fill: false,
             data: {{values | tojson}}
             }]
           }, 
           options: {
             title: {
               display: true,
-              text: 'Pie Chart Title'
+              text: 'World Population'
             }
           }
         });
