@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>World population</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
+  </head>
+
+<body>
+        <div class="wrapper">
+                <h1>World population over time</h1>
+                <h2>Number of people (in millions) living on earth, the last 500 years</h2>
+          
+                <canvas id="line_chart" width="800" height="800"></canvas>
+              </div>
+
+</body>
+
+<script>
+    new Chart(document.getElementById("line_chart"), {
+         type: 'line',
+          data: {
+            labels: {{labels | tojson}},
+            datasets: [{
+              label: "Pie Chart",
+              backgroundColor: {{colors | tojson}},
+            data: {{values | tojson}}
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Pie Chart Title'
+            }
+          }
+        });
+</script>
+</html>

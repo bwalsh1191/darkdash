@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My First Dash</title>
-    
+    <title>World population</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
   </head>
   <body>
     <div class="wrapper">
-      <h1>{{ chart_name }}</h1>
+      <h1>World population over time</h1>
       <h2>Number of people (in millions) living on earth, the last 500 years</h2>
 
-
+      <canvas id="myChart" width="1600" height="900"></canvas>
     </div>
 
     <script src="/static/script.js"></script>

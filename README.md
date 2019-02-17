@@ -8,4 +8,4 @@
 python hello.py
 
 
-#This works
+#This works. Run App2 for funcitoning bar graph
