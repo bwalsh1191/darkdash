@@ -18,14 +18,15 @@
 
 <script>
     new Chart(document.getElementById("line_chart"), {
-         type: 'line',
+         type: 'bar',
           data: {
             labels: {{days | tojson}},
             datasets: [{
               label: {{symbol | tojson}},
               borderColor: "#3e95cd",
               fill: false,
-            data: {{values | tojson}}
+
+            data: {{avg_price | tojson}}
             }]
           }, 
           options:{

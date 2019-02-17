@@ -10,10 +10,10 @@ API_KEY = '4HNDQOUQ2A1G90RW'
 @app.route('/')
 def hello_world():
 
-    symbol='msft'
-    values, days = make_df(symbol)
+    symbol='aapl'
+    days, avg_price = make_df(symbol)
     
-    return render_template('index.html', values=values, symbol=symbol, days=days)
+    return render_template('index.html', days=days, symbol=symbol, avg_price=avg_price)
 '''
 def get_data():
     years = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009]
@@ -23,7 +23,7 @@ def get_data():
 
 def make_df(symbol): 
     #use this one for testing
-    url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + symbol + '&outputsize=compact&datatype=csv&apikey=' + API_KEY
+    url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + symbol + '&outputsize=full&datatype=csv&apikey=' + API_KEY
     df = pd.read_csv(url, index_col="timestamp", parse_dates = True, na_values = ' ')
     df['close'] = df['adjusted_close']
     df.index.names = ['date']
@@ -35,8 +35,12 @@ def make_df(symbol):
     df['year'] = df['date'].dt.year
     close_price = list(reversed(df['close'].tolist()))
     #close_price = list(reversed(close_price))
-    days= list(reversed(df['date'].tolist()))
-    return(close_price, days)
+    #days= list(reversed(df['date'].tolist()))
+    days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+    avg_price = df['close'].groupby(df['day']).mean().reindex(days).tolist()
+
+    #return(close_price, week_df)
+    return(days, avg_price)
 
 
 #THIS HAST TO BE THE END OF THE FILE
